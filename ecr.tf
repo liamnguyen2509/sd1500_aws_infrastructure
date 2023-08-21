@@ -2,7 +2,6 @@ module "ecr_frontend" {
   source = "terraform-aws-modules/ecr/aws"
 
   repository_name = "assigment-frontend"
-  repository_type = "public"
 
   repository_lifecycle_policy = jsonencode({
     rules = [
@@ -29,7 +28,6 @@ module "ecr_backend" {
   source = "terraform-aws-modules/ecr/aws"
 
   repository_name = "assigment-backend"
-  repository_type = "public"
 
   repository_lifecycle_policy = jsonencode({
     rules = [

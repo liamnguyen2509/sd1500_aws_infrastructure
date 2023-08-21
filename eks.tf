@@ -20,16 +20,6 @@ module "eks" {
     }
   }
 
-  # Self Managed Node Group(s)
-  self_managed_node_group_defaults = {
-    instance_type                          = "t3a.micro"
-    update_launch_template_default_version = true
-    iam_role_additional_policies = {
-      AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-    }
-    key_name = module.key_pair.key_pair_name
-  }
-
   self_managed_node_groups = {
     one = {
       name         = "mixed-1"
