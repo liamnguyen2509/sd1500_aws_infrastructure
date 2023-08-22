@@ -3,6 +3,8 @@ module "ec2_instance" {
 
   name = "assignment-instance"
   
+  ami                    = "ami-091a58610910a87a9"
+  associate_public_ip_address = true
   instance_type          = "t2.micro"
   key_name               = module.key_pair.key_pair_name
   monitoring             = true
@@ -19,6 +21,8 @@ module "ec2_instance" {
     sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
     sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
     sudo yum install jenkins -y
-    sudo service jenkins start
+    sudo systemctl enable jenkins
+    sudo systemctl start jenkins
+    sudo systemctl status jenkins
   EOF
 }

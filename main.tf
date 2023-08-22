@@ -26,10 +26,8 @@ resource "tls_private_key" "this" {
 # Provider
 provider "aws" {
   region     = var.region
-  # access_key = "AKIAVPVVBN5J6DYG766X"
-  # secret_key = "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"
-  access_key = "AKIAVPVVBN5J4RX2FM7Z"
-  secret_key = "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"
+  access_key = "AKIASZHPLDFMIQUU67VW"
+  secret_key = "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"
 }
 
 provider "kubernetes" {
