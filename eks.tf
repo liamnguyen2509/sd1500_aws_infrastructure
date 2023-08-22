@@ -27,33 +27,24 @@ module "eks" {
     }
   }
 
-  one = {
-    name         = "mixed-1"
-    max_size     = 5
-    desired_size = 2
+  eks_managed_node_group_defaults = {
+    ami_type = "AL2_x86_64"
+  }
+  eks_managed_node_groups = {
+    one = {
+      name           = "node-1"
+      instance_types = ["t2.micro"]
+      min_size       = 1
+      max_size       = 2
+      desired_size   = 2
+    }
 
-    use_mixed_instances_policy = true
-    mixed_instances_policy = {
-      instances_distribution = {
-        on_demand_base_capacity                  = 0
-        on_demand_percentage_above_base_capacity = 10
-        spot_allocation_strategy                 = "capacity-optimized"
-      }
-
-      override = [
-        {
-          instance_type     = "t3a.micro"
-          weighted_capacity = "1"
-        },
-        {
-          instance_type     = "t3a.medium"
-          weighted_capacity = "2"
-        },
-        {
-          instance_type     = "t3a.large"
-          weighted_capacity = "3"
-        },
-      ]
+    two = {
+      name           = "node-2"
+      instance_types = ["t2.micro"]
+      min_size       = 1
+      max_size       = 2
+      desired_size   = 2
     }
   }
 }
